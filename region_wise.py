@@ -26,15 +26,15 @@ def crawler(reg,page_number):
 		name = w.find('h3',{'class':re.compile(r'\btop-res-box-name\b')}).a
 		address = w.find('span',{'class':re.compile(r'\bsearch-result-address\b')})
 		cuisine = w.find('div',{'class':re.compile(r'\bres-snippet-small-cuisine\b')})
-		print name.string
-		print address['title']
-		print cuisine['title']
+		# print name.string
+		# print address['title']
+		# print cuisine['title']
 		# print name['href']
-		print "-----------"
-		# hotels['name'] = name.string
-		# hotels['address'] = address['title']
-		# hotels['cuisine'] = cuisine['title']
-		# settings.db[region].insert(hotels)
+		# print "-----------"
+		hotels['name'] = name.string
+		hotels['address'] = address['title']
+		hotels['cuisine'] = cuisine['title']
+		settings.db["north"].insert(hotels)
 
 for i in region:
 	url = "http://www.zomato.com/chennai/restaurants/" + i
