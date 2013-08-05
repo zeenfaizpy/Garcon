@@ -3,7 +3,7 @@ from BeautifulSoup import BeautifulSoup as bs
 import re
 import settings
 
-region = ["north"]
+region = ["south","east","west","central"]
 
 
 
@@ -34,7 +34,8 @@ def crawler(reg,page_number):
 		hotels['name'] = name.string
 		hotels['address'] = address['title']
 		hotels['cuisine'] = cuisine['title']
-		settings.db["north"].insert(hotels)
+		settings.db[reg].insert(hotels)
+		print "database "+ reg + "side Chennai Hotels Created"
 
 for i in region:
 	url = "http://www.zomato.com/chennai/restaurants/" + i
